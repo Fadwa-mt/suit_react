@@ -1,33 +1,20 @@
-// import StudentItem from "./StudentItem";
-// export default function StudentsList(){
-//     const Students=[
-//         {id:0, first_name: 'Fadwa', last_name: 'Matloui'},
-//         {id:0, first_name: 'Amin', last_name: 'Hatib'},
-//         {id:0, first_name: 'Rayane', last_name: 'Challa'},
-//     ];
-//     return <div style={{display:'flex', flexDirection: 'column' }}>
-//         {Students.map((std,idx)=>{
-//         return<StudentItem key={std.id} Students={std} index={idx} />
-// })}
-//     </div>
-// }
-import { useState } from "react";
+
 import StudentItem from "./StudentItem";
 
-export default function StudentsList(){
-    const [search, setSearch] = useState('');
+export default function StudentsList(props){
     const Students=[
         {id:0, first_name: 'Fadwa', last_name: 'Matloui'},
-        {id:0, first_name: 'Amin', last_name: 'Hatib'},
-        {id:0, first_name: 'Rayane', last_name: 'Challa'},
+        {id:1, first_name: 'Amin', last_name: 'Hatib'},
+        {id:2, first_name: 'Rayane', last_name: 'Challa'},
+        {id:3, first_name: 'Youssra', last_name: 'Bahja'},
+        {id:4, first_name: 'Hind', last_name: 'Farjali'},
+        {id:5, first_name: 'Amina', last_name: 'Ammara'},
+        {id:6, first_name: 'Laila', last_name: 'Amine'},
     ];
-    return <div style={{display:'flex', flexDirection: 'column' }}>
-    <input type="text" onChange={evt =>{
-        setSearch(evt.target.value.toLowerCase())
-    }}
-    placeholder="search" style={{marginBottom: 30, width: 200, padding: 1}} />
+    return <div style={{ display:'flex', flexWrap:'wrap'}}>
     {Students
-    .filter(std=> std.first_name.toLowerCase().includes(search) || std.last_name.toLowerCase().includes(search)).map((std, idx)=>{
+    .filter(std=> std.first_name.toLowerCase().includes(props.search) 
+    || std.last_name.toLowerCase().includes(props.search)).map((std, idx)=>{
         return <StudentItem 
         key={std.id}
         student={std}

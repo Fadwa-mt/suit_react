@@ -16,8 +16,9 @@
 // }
 export default function StudentItem(props){
     return <button style={{
-        width:200,
-        marginBottom:10,
+        width:100,
+        height:100,
+        margin:10,
         background: props.index %2? '#ccc':'#eee',
         color:'#FFF',
         padding:10,

@@ -23,12 +23,21 @@
 // }
 
 // export default App;
-import StudentsList from "./Students";
+//import StudentsList from "./Students";
+import Header from "./Header";
+import Main from "./Main";
+import MenuLeft from "./MenuLeft";
 
 function App(){
   return(
-    <div style={{padding:20}}>
-      <StudentsList/>
+    <div style={{padding:20, display:'flex'}}>
+      <div style={{width:200, border:'1px solid #ccc'}}>
+        <MenuLeft/>
+      </div>
+      <div style={{display:'flex' ,flexDirection:'column',flex:1, border:'1px solid #ccc'}}>
+        <Header/>
+        <Main/>
+      </div>
     </div>
   );
 }
