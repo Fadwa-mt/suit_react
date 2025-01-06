@@ -1,29 +1,6 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 // export default App;
 //import StudentsList from "./Students";
+/*
 import Header from "./Header";
 import Main from "./Main";
 import MenuLeft from "./MenuLeft";
@@ -39,6 +16,35 @@ function App(){
         <Main/>
       </div>
     </div>
+  );
+}
+
+export default App;
+*/
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SearchProvider from "./SearchProvider";
+import MainLayout from "./MainLayout";
+import { lazy } from "react";
+// import Welcome, { Welcome3 } from "./Welcome";
+
+const StudentsList = lazy(() => import('./Students'));
+const ClassesList = lazy(() => import('./Classes'));
+
+
+function App() {
+  return (
+    <BrowserRouter>
+      <SearchProvider>
+        <Routes>
+          <Route path="/" element={<MainLayout/>}>
+            <Route path="/" element={<StudentsList/>}/>
+            <Route path="/classes" element={<ClassesList/>}/>
+            <Route path="/classes/:id/students" element={<StudentsList/>}/>
+          </Route>
+        </Routes>
+      
+      </SearchProvider>
+    </BrowserRouter>
   );
 }
 
